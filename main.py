@@ -4,6 +4,7 @@ from fastapi import FastAPI, Request, Form, Depends, HTTPException
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from scipy._lib.pyprima.common import message
 from starlette.middleware.sessions import SessionMiddleware
 from pathlib import Path
 import pandas as pd
@@ -94,6 +95,7 @@ def logout(request: Request):
 @app.get("/search", response_class=HTMLResponse)
 def search_page(request: Request):
     if not logged_in(request):
+        request.session["flash"] = "Please log in first to search!"
         return RedirectResponse("/login", status_code=302)
     return templates.TemplateResponse(request,"search.html", {"request": request, "user": request.session.get("user"), "query": "", "results": None})
 
