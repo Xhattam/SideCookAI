@@ -1,0 +1,12 @@
+$kind: http-request
+name: LOCALHOST:login POST
+url: 127.0.0.1:8000/login
+method: POST
+body:
+  type: urlencoded
+  content:
+    - key: username
+      value: demo
+    - key: password
+      value: demo123
+order: 2847544444978254

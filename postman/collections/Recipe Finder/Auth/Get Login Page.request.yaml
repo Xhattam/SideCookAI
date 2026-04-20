@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get Login Page
+method: GET
+url: '{{baseUrl}}/login'
+order: 1000

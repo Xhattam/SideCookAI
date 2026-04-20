@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get Search Page
+method: GET
+url: '{{baseUrl}}/search'
+order: 1000

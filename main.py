@@ -8,11 +8,13 @@ from starlette.middleware.sessions import SessionMiddleware
 from pathlib import Path
 import pandas as pd
 import numpy as np
+import logging
 import faiss
 from sentence_transformers import SentenceTransformer
 import json
 from dotenv import load_dotenv
 
+logger = logging.getLogger("Main")
 load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
@@ -42,7 +44,8 @@ def ensure_index():
         index = faiss.read_index(str(INDEX_FILE))
         meta = json.loads(META_FILE.read_text())
         return
-    df = pd.read_csv(RECIPES_CSV)
+
+    df = pd.read_csv(filepath_or_buffer=RECIPES_CSV, sep="|")
     docs = (df["title"].fillna("") + ". " + df["contents"].fillna("")).tolist()
     emb = model.encode(docs, normalize_embeddings=True).astype(np.float32)
     index = faiss.IndexFlatIP(emb.shape[1])
@@ -71,13 +74,13 @@ def root(request: Request):
 
 @app.get("/login", response_class=HTMLResponse)
 def login_page(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request, "error": None})
+    return templates.TemplateResponse(request,"login.html", {"request": request, "error": None})
 
 
 @app.post("/login")
 def login(request: Request, username: str = Form(...), password: str = Form(...)):
     if USERS.get(username) != password:
-        return templates.TemplateResponse("login.html", {"request": request, "error": "Invalid username or password."}, status_code=401)
+        return templates.TemplateResponse(request,"login.html", {"request": request, "error": "Invalid username or password."}, status_code=401)
     request.session["user"] = username
     return RedirectResponse("/search", status_code=302)
 
@@ -92,7 +95,7 @@ def logout(request: Request):
 def search_page(request: Request):
     if not logged_in(request):
         return RedirectResponse("/login", status_code=302)
-    return templates.TemplateResponse("search.html", {"request": request, "user": request.session.get("user"), "query": "", "results": None})
+    return templates.TemplateResponse(request,"search.html", {"request": request, "user": request.session.get("user"), "query": "", "results": None})
 
 
 @app.post("/search", response_class=HTMLResponse)
@@ -101,7 +104,7 @@ def do_search(request: Request, query: str = Form(...)):
         return RedirectResponse("/login", status_code=302)
     q = query.strip()
     if not q:
-        return templates.TemplateResponse("search.html", {"request": request, "user": request.session.get("user"), "query": query, "results": [], "message": "Enter a search query."})
+        return templates.TemplateResponse(request, "search.html", {"request": request, "user": request.session.get("user"), "query": query, "results": [], "message": "Enter a search query."})
     q_emb = model.encode([q], normalize_embeddings=True).astype(np.float32)
     scores, ids = index.search(q_emb, k=min(5, index.ntotal))
     results = []
@@ -112,4 +115,4 @@ def do_search(request: Request, query: str = Form(...)):
             "contents": row["contents"],
             "score": float(score)
         })
-    return templates.TemplateResponse("search.html", {"request": request, "user": request.session.get("user"), "query": query, "results": results, "message": None})
+    return templates.TemplateResponse(request,"search.html", {"request": request, "user": request.session.get("user"), "query": query, "results": results, "message": None})

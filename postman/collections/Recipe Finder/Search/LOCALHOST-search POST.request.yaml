@@ -1,0 +1,17 @@
+$kind: http-request
+name: LOCALHOST:search POST
+url: 127.0.0.1:8000/search?query=pear
+method: POST
+queryParams:
+  - key: query
+    value: pear
+    $type: ""
+body:
+  type: formdata
+  content:
+    - type: text
+      key: query
+      value: pear
+      description: ""
+      disabled: false
+order: 2123103400363040

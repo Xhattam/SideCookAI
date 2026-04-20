@@ -1,42 +1,42 @@
 [
   {
-    "title": " vanilla",
-    "contents": " and a tender crumb."
+	"title": "Pear upside-down cake",
+	"contents": "A moist cake baked with sliced pears, brown sugar, butter, vanilla, and a tender crumb."
   },
   {
-    "title": " and yogurt for a soft texture.",
-    "contents": NaN
+      "title": "Spiced pear loaf",
+      "contents": "A simple loaf cake with pears, cinnamon, nutmeg, and yogurt for a soft texture."
   },
   {
-    "title": NaN,
-    "contents": NaN
+      "title": "Pear and almond tart",
+      "contents": "A buttery tart filled with almond cream and fresh pear slices."
   },
   {
-    "title": " flour",
-    "contents": " and frosting."
+      "title": "Chocolate fudge cake",
+      "contents": "A rich chocolate cake with cocoa, butter, eggs, flour, and frosting."
   },
   {
-    "title": NaN,
-    "contents": NaN
+      "title": "Apple crumble cake",
+      "contents": "A fruit cake with apples, cinnamon, and a crumb topping."
   },
   {
-    "title": NaN,
-    "contents": NaN
+      "title": "Vanilla sponge cake",
+      "contents": "A light sponge cake for layering with cream and fruit."
   },
   {
-    "title": NaN,
-    "contents": NaN
+      "title": "Carrot cake",
+      "contents": "A spiced cake with grated carrots, walnuts, and cream cheese frosting."
   },
   {
-    "title": NaN,
-    "contents": NaN
+      "title": "Lemon drizzle loaf",
+      "contents": "A bright citrus loaf with lemon zest and a sweet glaze."
   },
   {
-    "title": NaN,
-    "contents": NaN
+      "title": "Pear muffins",
+      "contents": "Quick muffins with diced pears, oats, and cinnamon."
   },
   {
-    "title": NaN,
-    "contents": NaN
+      "title": "Pear and ginger cake",
+      "contents": "A warmly spiced cake with pears and crystallized ginger."
   }
 ]

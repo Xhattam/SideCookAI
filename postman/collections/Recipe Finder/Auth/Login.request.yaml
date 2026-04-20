@@ -1,0 +1,12 @@
+$kind: http-request
+name: Login
+method: POST
+url: '{{baseUrl}}/login'
+order: 2000
+body:
+  type: urlencoded
+  content:
+    - key: username
+      value: demo
+    - key: password
+      value: demo123

@@ -1,0 +1,10 @@
+$kind: http-request
+name: Search Recipes
+method: POST
+url: '{{baseUrl}}/search'
+order: 2000
+body:
+  type: urlencoded
+  content:
+    - key: query
+      value: pasta

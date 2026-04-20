@@ -1,0 +1,5 @@
+$kind: http-request
+name: Logout
+method: GET
+url: '{{baseUrl}}/logout'
+order: 3000

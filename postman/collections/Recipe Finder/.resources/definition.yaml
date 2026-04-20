@@ -1,0 +1,7 @@
+$kind: collection
+name: Recipe Finder
+description: 'API collection for the Recipe Finder FastAPI app. Handles authentication and semantic recipe search.'
+variables:
+  - key: baseUrl
+    value: 'http://localhost:8000'
+    description: 'Base URL for the Recipe Finder API'
