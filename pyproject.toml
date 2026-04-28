@@ -34,4 +34,4 @@ dependencies = [
 ]
 
 [tool.uv]
-python-downloads = "managed"
+python-downloads = "auto"
