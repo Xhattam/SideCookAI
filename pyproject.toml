@@ -32,3 +32,6 @@ dependencies = [
     "httptools",
     "fcntl"
 ]
+
+[tool.uv]
+python-downloads = "managed"
