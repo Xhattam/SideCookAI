@@ -15,6 +15,8 @@ from sentence_transformers import SentenceTransformer
 import json
 from dotenv import load_dotenv
 
+
+
 logger = logging.getLogger("Main")
 load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent
